@@ -1,6 +1,5 @@
 let principal = document.getElementById('main')
 
-
 function botaoAddTarefa(){
     let botao = document.createElement('button')
     botao.id = "criar-tarefa"
@@ -46,6 +45,7 @@ function adicionaNovaTarefa(){
 adicionaNovaTarefa()
 
 let itemLista = document.querySelectorAll('#lista-tarefas')
+
 function selecionaItem(){
     let corFundo = 'white'
     let destaque = 'rgb(128,128,128)'
@@ -68,4 +68,22 @@ function selecionaItem(){
 }
 selecionaItem()
 
+function cortaTarefaCumprida(){
+    for(let index = 0; index < itemLista.length; index += 1){
+        console.log('entrei no for')
 
+        itemLista[index].addEventListener('dblclick', function(event){
+           
+            if(event.target.className !== 'completed'){
+               event.target.classList.add('completed')
+               event.target.style.textDecoration = 'line-through'
+           } else {
+            event.target.classList.remove('completed')
+            event.target.style.textDecoration = 'none'
+           }
+            
+
+        })
+    } 
+}
+cortaTarefaCumprida()
