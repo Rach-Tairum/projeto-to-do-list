@@ -57,7 +57,7 @@ function selecionaItem(){
             
             let selecionado = document.getElementsByClassName('selecionado')
 
-            if (selecionado.length > 1){
+            if (selecionado.length !== 1){
                 selecionado[0].style.backgroundColor = corFundo
                 selecionado[0].classList.remove('selecionado')
                 
@@ -69,18 +69,18 @@ function selecionaItem(){
 selecionaItem()
 
 function cortaTarefaCumprida(){
-    for(let index = 0; index < itemLista.length; index += 1){
-        console.log('entrei no for')
-
-        itemLista[index].addEventListener('dblclick', function(event){
-           
-            if(event.target.className !== 'completed'){
-               event.target.classList.add('completed')
-               event.target.style.textDecoration = 'line-through'
-           } else {
+    for(let i = 0; i < itemLista.length; i += 1){
+     itemLista[i].addEventListener('dblclick', function(event){  
+        
+        if(event.target.classList === 'completed'){
             event.target.classList.remove('completed')
             event.target.style.textDecoration = 'none'
+           } 
+           else {
+            event.target.classList.add('completed')
+            event.target.style.textDecoration = 'line-through'
            }
+           console.log(completed)
             
 
         })
