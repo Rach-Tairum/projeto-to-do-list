@@ -61,7 +61,7 @@ function cortaTarefaCumprida(){
     for(let i = 0; i < itemLista.length; i += 1){
      itemLista[i].addEventListener('dblclick', function(event){  
         
-        if(event.target.className === "item completed" || event.target.className === "item completed selecionado"){
+        if(event.target.classList.contains("completed")){
             event.target.classList.remove('completed')
             event.target.style.textDecoration = 'none'
         }else {
@@ -96,7 +96,7 @@ function botaoApagatarefaFeita(){
     principal.appendChild(botao)
 
    botao.addEventListener('click', function(){
-        let lista = document.getElementsByTagName('#lista-tarefas>li')
+        let lista = document.querySelectorAll('#lista-tarefas>li')
             
         for(let index = 0; index < lista.length; index += 1){  
             if(lista[index].classList.contains("completed"))
@@ -123,3 +123,4 @@ function removeSelecionado(){
     })
 }
 removeSelecionado()
+
