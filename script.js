@@ -96,15 +96,12 @@ function botaoApagatarefaFeita(){
     principal.appendChild(botao)
 
    botao.addEventListener('click', function(){
-        let lista = document.querySelectorAll('#lista-tarefas')
-        let concluido = document.getElementsByClassName('completed')
-        console.log(concluido)
-        
-        for(let i = 0; i < concluido.length; i += 1){
-            for(let index = 0; index < lista.length; index += 1){   
-            lista[index].removeChild(concluido[i])
+        let lista = document.getElementsByTagName('#lista-tarefas>li')
+            
+        for(let index = 0; index < lista.length; index += 1){  
+            if(lista[index].classList.contains("completed"))
+                lista[index].parentElement.removeChild(lista[index])
             }
-        }
    })
 }
 botaoApagatarefaFeita()
