@@ -40,19 +40,16 @@ function selecionaItem(){
         itemLista[i].addEventListener('click', function(event){
             
             let selecionado = document.getElementsByClassName('selecionado')
-            console.log(selecionado)
 
             if(selecionado.length === 1) {
                 selecionado[0].style.backgroundColor = corFundo
                 selecionado[0].classList.remove('selecionado')
                 event.target.classList.add('selecionado')
                 event.target.style.backgroundColor = destaque
-            } else{
+            } else {
                 event.target.classList.add('selecionado')
                 event.target.style.backgroundColor = destaque
-            }
-            
-             
+            }       
      })
     } 
     
@@ -60,25 +57,20 @@ function selecionaItem(){
 selecionaItem()
 
 function cortaTarefaCumprida(){
+    
     for(let i = 0; i < itemLista.length; i += 1){
      itemLista[i].addEventListener('dblclick', function(event){  
         
-        event.target.classList.add('completed')
-        event.target.style.textDecoration = 'line-through'
-
-    })
-    }
-
-    let completo = document.getElementsByClassName('completed')
-    console.log(completo)
-
-    for(let i = 0; i < completo.length; i += 1){
-        completo[i].addEventListener('dblclick', function(event){
+        if(event.target.className === "item completed" || event.target.className === "item completed selecionado"){
             event.target.classList.remove('completed')
             event.target.style.textDecoration = 'none'
-        })
-        }       
-     
+        }else {
+            event.target.classList.add('completed')
+            event.target.style.textDecoration = 'line-through'
+        }
+        
+    }) 
+    }
 }
 cortaTarefaCumprida()
 
@@ -104,10 +96,15 @@ function botaoApagatarefaFeita(){
     principal.appendChild(botao)
 
    botao.addEventListener('click', function(){
-       let concluido = document.getElementsByClassName('completed')
-       for(let i = 0; i < concluido.length; i += 1){
-           concluido[i].innerHTML = ''
-       }
+        let lista = document.querySelectorAll('#lista-tarefas')
+        let concluido = document.getElementsByClassName('completed')
+        console.log(concluido)
+        
+        for(let i = 0; i < concluido.length; i += 1){
+            for(let index = 0; index < lista.length; index += 1){   
+            lista[index].removeChild(concluido[i])
+            }
+        }
    })
 }
 botaoApagatarefaFeita()
