@@ -108,3 +108,21 @@ function botaoApagatarefaFeita(){
    })
 }
 botaoApagatarefaFeita()
+
+function removeSelecionado(){
+    let butao = document.createElement('button')
+    butao.innerText = "remover selecionado"
+    butao.id = 'remover-selecionado'
+    principal.appendChild(butao)
+
+    butao.addEventListener('click', function(){
+        let selecionado = document.getElementsByClassName('selecionado')
+        let lista = document.querySelectorAll('#lista-tarefas')
+        for(let i = 0; i < selecionado.length; i += 1){
+            for(let index = 0; index < lista.length; index += 1){   
+            lista[index].removeChild(selecionado[i])
+            }
+        }
+    })
+}
+removeSelecionado()
