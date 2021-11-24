@@ -39,13 +39,13 @@ function selecionaItem(){
     for(let i = 0; i < itemLista.length; i += 1){
         itemLista[i].addEventListener('click', function(event){
             event.target.style.backgroundColor = destaque
-            event.target.className = 'item selecionado'
+            event.target.classList.add('selecionado')
             
             let selecionado = document.getElementsByClassName('selecionado')
 
             if (selecionado.length !== 1){
-                selecionado[0].classList.remove('selecionado')
                 selecionado[0].style.backgroundColor = corFundo
+                selecionado[0].classList.remove('selecionado')
                 
            } 
      })
@@ -58,15 +58,15 @@ function cortaTarefaCumprida(){
     for(let i = 0; i < itemLista.length; i += 1){
      itemLista[i].addEventListener('dblclick', function(event){  
         
-        if(event.target.classList === 'item completed'){
+        event.target.classList.add('completed')
+        event.target.style.textDecoration = 'line-through'
+
+        if(event.target.classList === 'completed'){
             event.target.classList.remove('completed')
             event.target.style.textDecoration = 'none'
            } 
-           else {
-            event.target.classList.add('completed')
-            event.target.style.textDecoration = 'line-through'
-           }
-           console.log(completed)
+
+           
             
 
         })
@@ -95,9 +95,11 @@ function botaoApagatarefaFeita(){
     botao.id = 'remover-finalizados'
     principal.appendChild(botao)
 
-   button.addEventListener('click', function(){
+   botao.addEventListener('click', function(){
        let concluido = document.getElementsByClassName('completed')
-       concluido.innerHTML = ''
+       for(let i = 0; i < concluido.length; i += 1){
+           concluido[i].innerHTML = ''
+       }
    })
 }
 botaoApagatarefaFeita()
