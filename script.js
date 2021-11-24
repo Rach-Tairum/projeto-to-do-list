@@ -106,6 +106,32 @@ function botaoApagatarefaFeita(){
 }
 botaoApagatarefaFeita()
 
+function moveElemento(){
+    let botaoSobe = document.createElement('button')
+    botaoSobe.id = 'mover-cima'
+    botaoSobe.innerText = "aumenta prioridade"
+    principal.appendChild(botaoSobe)
+
+    let botaoDesce = document.createElement('button')
+    botaoDesce.id = "mover-baixo"
+    botaoDesce.innerText = "reduz prioridade"
+    principal.appendChild(botaoDesce)
+
+    botaoDesce.addEventListener('click', function(){
+        let lista = document.querySelectorAll('#lista-tarefas>li')
+        for(let i = 0; i < lista.length; i += 1){
+                for(let index = 1; index < i+2; index += 1){
+                    if(lista[i].classList.contains('selecionado') && lista[i].nextElementSibling !== null){
+                        let troca = lista[i].innerHTML
+                        lista[i].innerHTML = lista[index].innerHTML
+                        lista[index].innerHTML = troca
+                }
+            }
+        }
+    })
+}
+moveElemento()
+
 function removeSelecionado(){
     let butao = document.createElement('button')
     butao.innerText = "remover selecionado"
