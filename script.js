@@ -117,16 +117,23 @@ function moveElemento(){
     botaoDesce.innerText = "reduz prioridade"
     principal.appendChild(botaoDesce)
 
+ //Referência:
+ //https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore
     botaoDesce.addEventListener('click', function(){
-        let lista = document.querySelectorAll('#lista-tarefas>li')
-        for(let i = 0; i < lista.length; i += 1){
-                for(let index = 1; index < i+2; index += 1){
-                    if(lista[i].classList.contains('selecionado') && lista[i].nextElementSibling !== null){
-                        let troca = lista[i].innerHTML
-                        lista[i].innerHTML = lista[index].innerHTML
-                        lista[index].innerHTML = troca
-                }
-            }
+        let itens = document.querySelectorAll('#lista-tarefas>li')
+        for(let i = 0; i < itens.length; i += 1){
+            if(itens[i].classList.contains('selecionado') && itens[i].nextElementSibling !== null){
+                itens[i].parentElement.insertBefore(itens[i].nextElementSibling,itens[i])
+            }   
+        }
+    })
+
+    botaoSobe.addEventListener('click', function(){
+        let itens = document.querySelectorAll('#lista-tarefas>li')
+        for(let i = 0; i < itens.length; i += 1){
+            if(itens[i].classList.contains('selecionado') && itens[i].previousElementSibling !== null){
+                itens[i].parentElement.insertBefore(itens[i], itens[i].previousElementSibling)
+            }   
         }
     })
 }
