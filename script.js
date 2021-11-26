@@ -107,28 +107,26 @@ function botaoApagatarefaFeita(){
 }
 botaoApagatarefaFeita()
 
-// function guardaLista(){
-//     let botao = document.createElement('button')
-//     botao.id = 'salvar-tarefas'
-//     botao.innerText = 'Guardar lista'
-//     principal.appendChild(botao);
+function guardaLista() {
+     let botao = document.createElement('button')
+     botao.id = 'salvar-tarefas'
+     botao.innerText = 'Guardar lista'
+     principal.appendChild(botao);
 
-//     botao.addEventListener('click', function(){
-//         let itens = document.querySelectorAll('#lista-tarefas>li')
-//         let guardar = []
+    botao.addEventListener('click', function(){
+        let itens = document.querySelector('#lista-tarefas')
+        let guardar = itens.innerHTML
 
-//         for(let index = 0; index < itens.length; index += 1){
-//             guardar.push(itens[index])
-//         }
+        localStorage.setItem('lista', guardar)
+    })
+}
+guardaLista()
 
-//         localStorage.setItem('lista', guardar)
-//     })
-    
-//     window.onload = function(){
-//         localStorage.getItem('lista')
-//     }
-// }
-// guardaLista()
+function retomaLista() {
+    let itens = document.querySelector('#lista-tarefas')
+    itens.innerHTML = localStorage.getItem('lista')
+}
+retomaLista()
 
 function moveElemento(){
     let botaoSobe = document.createElement('button')
