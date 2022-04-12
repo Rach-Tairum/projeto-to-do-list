@@ -15,8 +15,17 @@
 
 - Manipular elementos do DOM
 
--Manipulação do Local Storage
+- Manipulação do Local Storage
 
 --- 
 
 ## Projeto finalizado
+
+
+
+https://user-images.githubusercontent.com/93009735/162975866-84cb5690-d716-43e1-ac0c-904f99d56a5d.mp4
+
+
+
+https://user-images.githubusercontent.com/93009735/162976347-95c0b4f3-739d-48a8-bcad-f91a7eddf3a2.mp4
+
